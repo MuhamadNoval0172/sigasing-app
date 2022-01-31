@@ -1,6 +1,28 @@
 <?php include_once "partials/cssdatatables.php" ?>
 <div class="content-header">
     <div class="container-fluid">
+        <?php
+        if (isset($_SESSION["hasil"])) {
+            if ($_SESSION["hasil"]) {
+                $alert = "alert-success";
+                $icon = "fa-check";
+                $keterangan = "Berhasil";
+            } else {
+                $alert = "alert-danger";
+                $icon = "fa-check";
+                $keterangan = "Gagal";
+            }
+        ?>
+            <div class="alert <?= $alert ?> alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                <h5><i class="icon fas <?= $icon ?>"></i><?= $keterangan ?></h5>
+                <?= $_SESSION['pesan']; ?>
+            </div>
+        <?php
+            unset($_SESSION['hasil']);
+            unset($_SESSION['pesan']);
+        }
+        ?>
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1 class="m-0">Lokasi</h1>
@@ -59,10 +81,10 @@
                             <td><?php echo $no++ ?></td>
                             <td><?php echo $row['nama_lokasi'] ?></td>
                             <td>
-                                <a href="?page=lokasiupdate$id=<?php echo $row['id'] ?>" class="btn btn-primary btn-sm mr-1">
+                                <a href="?page=lokasiupdate&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-sm mr-1">
                                     <i class="fa fa-edit"></i> Ubah
                                 </a>
-                                <a href="?page=lokasidelete$id=<?php echo $row['id'] ?>" class="btn btn-danger btn-sm" onclick="javascript: return comfirm('Konfirmasi data akan dihapus');">
+                                <a href="?page=lokasidelete&id=<?php echo $row['id'] ?>" class="btn btn-danger btn-sm" onclick="javascript: return comfirm('Konfirmasi data akan dihapus');">
                                     <i class="fa fa-trash"></i> Hapus
                                 </a>
                             </td>
