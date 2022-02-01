@@ -24,6 +24,12 @@ if (isset($_GET['page'])) {
         case 'jabatancreate': //index.php?page=jabatancreate
             file_exists('pages/admin/jabatancreate.php') ? include 'pages/admin/jabatancreate.php' : include 'pages/404.php';
             break;
+        case 'jabatanupdate': //index.php?page=jabatanupdate
+            file_exists('pages/admin/jabatanupdate.php') ? include 'pages/admin/jabatanupdate.php' : include 'pages/404.php';
+            break;
+        case 'jabatandelete': //index.php?page=lokasidelete
+            file_exists('pages/admin/jabatandelete.php') ? include 'pages/admin/jabatandelete.php' : include 'pages/404.php';
+            break;
         default:
             include "pages/404.php";
     }
