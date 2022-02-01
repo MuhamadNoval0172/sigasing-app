@@ -30,6 +30,18 @@ if (isset($_GET['page'])) {
         case 'jabatandelete': //index.php?page=lokasidelete
             file_exists('pages/admin/jabatandelete.php') ? include 'pages/admin/jabatandelete.php' : include 'pages/404.php';
             break;
+        case 'bagianread':
+            file_exists('pages/admin/bagianread.php') ? include 'pages/admin/bagianread.php' : include "pages/404.php";
+            break;
+        case 'bagiancreate': //index.php?page=bagiancreate
+            file_exists('pages/admin/bagiancreate.php') ? include 'pages/admin/bagiancreate.php' : include 'pages/404.php';
+            break;
+        case 'bagianupdate': //index.php?page=bagianupdate
+            file_exists('pages/admin/bagianupdate.php') ? include 'pages/admin/bagianupdate.php' : include 'pages/404.php';
+            break;
+        case 'bagiandelete':
+            file_exists('pages/admin/bagiandelete.php') ? include 'pages/admin/bagiandelete.php' : include 'pages/404.php';
+            break;
         default:
             include "pages/404.php";
     }
