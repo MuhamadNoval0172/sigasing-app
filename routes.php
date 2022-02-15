@@ -42,6 +42,33 @@ if (isset($_GET['page'])) {
         case 'bagiandelete':
             file_exists('pages/admin/bagiandelete.php') ? include 'pages/admin/bagiandelete.php' : include 'pages/404.php';
             break;
+        case 'karyawanread':
+            file_exists('pages/admin/karyawanread.php') ? include 'pages/admin/karyawanread.php' : include "pages/404.php";
+            break;
+        case 'karyawancreate':
+            file_exists('pages/admin/karyawancreate.php') ? include 'pages/admin/karyawancreate.php' : include 'pages/404.php';
+            break;
+        case 'karyawanupdate':
+            file_exists('pages/admin/karyawanupdate.php') ? include 'pages/admin/karyawanupdate.php' : include 'pages/404.php';
+            break;
+        case 'karyawandelete':
+            file_exists('pages/admin/karyawandelete.php') ? include 'pages/admin/karyawandelete.php' : include 'pages/404.php';
+            break;
+        case 'karyawanbagian':
+            file_exists('pages/admin/karyawanbagian.php') ? include 'pages/admin/karyawanbagian.php' : include 'pages/404.php';
+            break;
+        case 'karyawanjabatan':
+            file_exists('pages/admin/karyawanjabatan.php') ? include 'pages/admin/karyawanjabatan.php' : include 'pages/404.php';
+            break;
+        case 'penggajianrekap':
+            file_exists('pages/admin/penggajianrekap.php') ? include 'pages/admin/penggajianrekap.php' : include 'pages/404.php';
+            break;
+        case 'penggajianbulanan':
+            file_exists('pages/admin/penggajianbulanan.php') ? include 'pages/admin/penggajianbulanan.php' : include 'pages/404.php';
+            break;
+        case 'penggajianperkaryawan':
+            file_exists('pages/admin/penggajianperkaryawan.php') ? include 'pages/admin/penggajianperkaryawan.php' : include 'pages/404.php';
+            break;
         default:
             include "pages/404.php";
     }

@@ -1,19 +1,34 @@
 <?php
 if (isset($_POST['button_create'])) {
+
     $database = new Database();
     $db = $database->getConnection();
 
-    $insertSql = "INSERT INTO lokasi (nama_lokasi) VALUES (?)";
-    $stmt = $db->prepare($insertSql);
+    $validateSql = "SELECT * FROM lokasi WHERE nama_lokasi = ?";
+    $stmt = $db->prepare($validateSql);
     $stmt->bindParam(1, $_POST['nama_lokasi']);
-    if ($stmt->execute()) {
-        $_SESSION['hasil'] = true;
-        $_SESSION['pesan'] = "Tambah data lokasi berhasil";
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+?>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+            <h5><i class="icon fas fa-ban"></i> Gagal</h5>
+            Nama Lokasi Sama Sudah Ada
+        </div>
+<?php
     } else {
-        $_SESSION['hasil'] = false;
-        $_SESSION['pesan'] = "Tambah data lokasi gagal";
+        $insertSql = "INSERT INTO lokasi (nama_lokasi) VALUES (?)";
+        $stmt = $db->prepare($insertSql);
+        $stmt->bindParam(1, $_POST['nama_lokasi']);
+        if ($stmt->execute()) {
+            $_SESSION['hasil'] = true;
+            $_SESSION['pesan'] = "Tambah data lokasi berhasil";
+        } else {
+            $_SESSION['hasil'] = false;
+            $_SESSION['pesan'] = "Tambah data lokasi gagal";
+        }
+        echo "<meta http-equiv='refresh' content='0;url=?page=lokasiread'>";
     }
-    echo "<meta http-equiv='refresh' content='0;url=?page=lokasiread'>";
 }
 ?>
 <?php include_once "partials/cssdatatables.php" ?>
